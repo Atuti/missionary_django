@@ -11,3 +11,11 @@ def get_all_ebooks(request):
     serializer = EbooksSerializer(ebooks, many=True)
 
     return Response(serializer.data)
+
+@api_view(['GET'])
+def get_first_ebook(request):
+    ebook = Ebooks.objects.all()[:1].get()
+
+    serializer = EbooksSerializer(ebook)
+
+    return Response(serializer.data)
