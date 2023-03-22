@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Ebooks, Links, StudyVideoLinks, StudyGuides
+from .models import Ebooks, Links, StudyVideoLinks, StudyGuides, Tracts
 
 class EbooksSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +20,9 @@ class StudyGuidesSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyGuides
         fields = ('title', 'get_guide')
+
+class TractsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tracts
+        fields = ('title', 'get_tract')
+

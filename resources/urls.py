@@ -8,4 +8,5 @@ urlpatterns = [
     path('home-links/', views.get_home_links),
     path('study-video-links/', views.get_study_links),
     path('study-guides/', views.get_study_guides),
+    path('tracts-and-brochures/', views.get_all_tracts),
 ]

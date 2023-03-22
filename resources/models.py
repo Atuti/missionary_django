@@ -13,6 +13,22 @@ class Ebooks(models.Model):
     def get_ebook(self):
         return settings.WEBSITE_URL + self.ebook.url
 
+    def __str__(self):
+        return self.title
+
+class Tracts(models.Model):
+    title = models.CharField(max_length=350)
+    tract = models.FileField(upload_to='tracts', blank=False, null=False)
+
+    class Meta:
+        verbose_name_plural='Tracts'
+
+    def get_tract(self):
+        return settings.WEBSITE_URL + self.tract.url
+
+    def __str__(self):
+        return self.title
+
 class Links(models.Model):
     link = models.CharField(max_length=500)
     title = models.CharField(max_length=500)

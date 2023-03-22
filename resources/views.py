@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Ebooks, Links, StudyVideoLinks, StudyGuides
-from .serializers import EbooksSerializer, LinksSerializer, StudyVideoLinksSerializer, StudyGuidesSerializer
+from .models import Ebooks, Links, StudyVideoLinks, StudyGuides, Tracts
+from .serializers import EbooksSerializer, LinksSerializer, StudyVideoLinksSerializer, StudyGuidesSerializer, TractsSerializer
 
 @api_view(['GET'])
 def get_all_ebooks(request):
@@ -49,5 +49,13 @@ def get_study_guides(request):
     guides = StudyGuides.objects.all()
 
     serializer = StudyGuidesSerializer(guides, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_all_tracts(request):
+    tracts = Tracts.objects.all()
+
+    serializer = TractsSerializer(tracts, many=True)
 
     return Response(serializer.data)
