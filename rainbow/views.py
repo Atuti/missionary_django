@@ -3,8 +3,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import QuestionSerializer, TestimonySerializer, PrayerSerializer
-from .models import Question, Testimony, Prayer
+from .serializers import QuestionSerializer, TestimonySerializer, PrayerSerializer, EmailSerializer
+from .models import Question, Testimony, Prayer, Email
 
 @api_view(['POST'])
 def send_question(request):
@@ -35,3 +35,13 @@ def send_prayer_request(request):
     serializer = PrayerSerializer(prayer)
 
     return Response(serializer.data)
+
+@api_view(['POST'])
+def send_email(request):
+    data = request.data
+
+    email = Email.objects.create(name = data.get('name'), number = data.get('number'), email = data.get('email'), message = data.get('message'))
+
+    serializer = EmailSerializer(email)
+
+    return Response(serializer.data)  

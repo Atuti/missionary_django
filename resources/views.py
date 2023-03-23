@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Ebooks, Links, StudyVideoLinks, StudyGuides, Tracts
-from .serializers import EbooksSerializer, LinksSerializer, StudyVideoLinksSerializer, StudyGuidesSerializer, TractsSerializer
+from .models import Ebooks, SabbathArchiveVideoLinks, StudyToShowVideoLinks, StudyGuides, Tracts, Events
+from .serializers import EbooksSerializer, SabbathArchiveVideoLinksSerializer, StudyToShowVideoLinksSerializer, StudyGuidesSerializer, TractsSerializer, EventsSerializer
 
 @api_view(['GET'])
 def get_all_ebooks(request):
@@ -22,25 +22,25 @@ def get_first_ebook(request):
 
 @api_view(['GET'])
 def get_links(request):
-    links = Links.objects.all()
+    links = SabbathArchiveVideoLinks.objects.all()
 
-    serializer = LinksSerializer(links, many=True)
+    serializer = SabbathArchiveVideoLinksSerializer(links, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def get_home_links(request):
-    links = Links.objects.all().order_by('-date_filed')[:3]
+    links = SabbathArchiveVideoLinks.objects.all().order_by('-date_filed')[:3]
 
-    serializer  = LinksSerializer(links, many=True)
+    serializer  = SabbathArchiveVideoLinksSerializer(links, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def get_study_links(request):
-    links = StudyVideoLinks.objects.all()
+    links = StudyToShowVideoLinks.objects.all()
 
-    serializer = StudyVideoLinksSerializer(links, many=True)
+    serializer = StudyToShowVideoLinksSerializer(links, many=True)
 
     return Response(serializer.data)
 
@@ -57,5 +57,13 @@ def get_all_tracts(request):
     tracts = Tracts.objects.all()
 
     serializer = TractsSerializer(tracts, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def get_events(request):
+    events = Events.objects.all().order_by('-date')
+
+    serializer = EventsSerializer(events, many=True)
 
     return Response(serializer.data)

@@ -1,19 +1,19 @@
 from rest_framework import serializers
-from .models import Ebooks, Links, StudyVideoLinks, StudyGuides, Tracts
+from .models import Ebooks, SabbathArchiveVideoLinks, StudyToShowVideoLinks, StudyGuides, Tracts, Events
 
 class EbooksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ebooks
         fields = ('title', 'get_ebook')
 
-class LinksSerializer(serializers.ModelSerializer):
+class SabbathArchiveVideoLinksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Links
+        model = SabbathArchiveVideoLinks
         fields = ('link','title')
 
-class StudyVideoLinksSerializer(serializers.ModelSerializer):
+class StudyToShowVideoLinksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudyVideoLinks
+        model = StudyToShowVideoLinks
         fields = ('link', 'description')
 
 class StudyGuidesSerializer(serializers.ModelSerializer):
@@ -25,4 +25,9 @@ class TractsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tracts
         fields = ('title', 'get_tract')
+
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Events
+        fields = ('title', 'info', 'get_image', 'date')
 

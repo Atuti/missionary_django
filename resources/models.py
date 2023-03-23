@@ -29,7 +29,7 @@ class Tracts(models.Model):
     def __str__(self):
         return self.title
 
-class Links(models.Model):
+class SabbathArchiveVideoLinks(models.Model):
     link = models.CharField(max_length=500)
     title = models.CharField(max_length=500)
     date_filed = models.DateTimeField(auto_now_add=True)
@@ -40,7 +40,7 @@ class Links(models.Model):
     def __str__(self):
         return self.title
 
-class StudyVideoLinks(models.Model):
+class StudyToShowVideoLinks(models.Model):
     link = models.CharField(max_length=500)
     title = models.CharField(max_length=500)
     description = RichTextField(blank=False, null=False)
@@ -63,3 +63,18 @@ class StudyGuides(models.Model):
 
     def __str__(self):
         return self.title
+
+class Events(models.Model):
+    title = models.CharField(max_length=350)
+    date = models.DateTimeField(auto_now_add=True)
+    info = RichTextField(blank=False, null=False)
+    image = models.ImageField(upload_to='events_images', blank=False, null=False)
+
+    class Meta:
+        verbose_name_plural='Events'
+
+    def __str__ (self):
+        return self.title
+    
+    def get_image(self):
+        return settings.WEBSITE_URL + self.image.url

@@ -1,4 +1,4 @@
-from .models import Question, Testimony, Prayer
+from .models import Question, Testimony, Prayer, Email
 from rest_framework import serializers
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -15,3 +15,8 @@ class PrayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prayer
         fields = ('name', 'prayer', 'country', 'email')
+
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Email
+        fields = ('name', 'message', 'number', 'email')

@@ -29,3 +29,12 @@ class Prayer(models.Model):
 
     def __str__(self):
         return self.name
+
+class Email(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+    number = models.CharField(max_length=250)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name

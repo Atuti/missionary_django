@@ -34,6 +34,11 @@ ALLOWED_HOSTS = ['api.rainbowfaithministries.org', 'localhost', '127.0.0.1','htt
 WEBSITE_URL = 'http://127.0.0.1:8000'
 
 
+DATETIME_FORMAT = 'Y-m-d H:i:sO'
+
+DATE_FORMAT = 'Y-m-d'
+
+
 
 
 # Application definition
@@ -71,6 +76,9 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 #CORS_ALLOW_ALL_ORIGINS = True
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%d.%m.%Y %H:%M'
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
