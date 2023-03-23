@@ -35,7 +35,7 @@ class SabbathArchiveVideoLinks(models.Model):
     date_filed = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name_plural='Links'
+        verbose_name_plural='SabbathArchiveVideoLinks'
 
     def __str__(self):
         return self.title
@@ -46,7 +46,7 @@ class StudyToShowVideoLinks(models.Model):
     description = RichTextField(blank=False, null=False)
 
     class Meta:
-        verbose_name_plural='StudyVideoLinks'
+        verbose_name_plural='StudyToShowVideoLinks'
 
     def __str__(self):
         return self.title
