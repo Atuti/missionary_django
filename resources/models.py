@@ -39,6 +39,10 @@ class SabbathArchiveVideoLinks(models.Model):
 
     def __str__(self):
         return self.title
+    
+    #for disabling other videos from showing in the frontend iframe
+    def get_link(self):
+        return self.link + '?rel=0'
 
 class StudyToShowVideoLinks(models.Model):
     link = models.CharField(max_length=500)
@@ -50,6 +54,10 @@ class StudyToShowVideoLinks(models.Model):
 
     def __str__(self):
         return self.title
+    
+    #for disabling other videos from showing in the frontend iframe
+    def get_link(self):
+        return self.link + '?rel=0'
 
 class StudyGuides(models.Model):
     title = models.CharField(max_length=500)

@@ -9,12 +9,12 @@ class EbooksSerializer(serializers.ModelSerializer):
 class SabbathArchiveVideoLinksSerializer(serializers.ModelSerializer):
     class Meta:
         model = SabbathArchiveVideoLinks
-        fields = ('link','title')
+        fields = ('get_link','title')
 
 class StudyToShowVideoLinksSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudyToShowVideoLinks
-        fields = ('link', 'description')
+        fields = ('get_link', 'description')
 
 class StudyGuidesSerializer(serializers.ModelSerializer):
     class Meta:
